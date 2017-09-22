@@ -14,7 +14,7 @@ class Inspiro::Scraper
 #  end
 
   def get_page
-    Nokogiri::HTML(open("http://https://www.ted.com/talks?sort=newest&topics%5B%5D=Technology&topics%5B%5D=Business"))
+    Nokogiri::HTML(open("https://www.ted.com/talks?sort=newest&topics%5B%5D=Technology&topics%5B%5D=Business"))
   end
 
   def get_videos
@@ -26,7 +26,6 @@ class Inspiro::Scraper
       video_title = videos.css(".ga-link").text
       video_speaker = videos.css(".h12 talk-link_speaker").text
       video_date = videos.css(".meta_val").text
-      video_url = videos.css(".talk-link").attr('href').value
       video_title
     end
   end
