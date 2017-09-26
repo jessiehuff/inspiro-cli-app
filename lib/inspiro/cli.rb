@@ -1,4 +1,5 @@
 #CLI Controller
+require 'pry'
 
 class Inspiro::CLI
   def call
@@ -18,6 +19,7 @@ class Inspiro::CLI
     while choice != "exit"
       if choice.to_i == 1
           Inspiro::Scraper.new.scrape_video_page
+          menu
       elsif choice.to_i == 2
         puts "option 2"
         menu
@@ -25,6 +27,7 @@ class Inspiro::CLI
         puts "option 3"
         menu
       elsif choice.downcase == "exit"
+        goodbye
         exit
       else
         puts "I'm not sure what you'd like to see. Please select a number from 1-3"
