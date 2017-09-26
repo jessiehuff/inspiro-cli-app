@@ -2,13 +2,13 @@ class Inspiro::Scraper
 
   def scrape_video_page
     doc = Nokogiri::HTML(open("https://www.ted.com/talks?sort=newest&topics%5B%5D=Technology&topics%5B%5D=Business"))
-    doc.css(".col").collect do |video_info|
-      video = Inspiro::Video.new
+    doc.css(".col").collect.with_index do |video_info, index|
 
-      video.title = video_info.search("a .ga-link").text
-      video.speaker = video_info.search("h4 .h12.talk-link__speaker").text
-      video.date = video_info.search("span.meta__val").text
-      video.url = video_info.search(".talk-link.ga-link")["href"]
+      video = {}
+      video[:title] = video_info.css("a .ga-link")[index].text
+      video[:speaker] = video_info.search("h4 .h12.talk-link__speaker")[index].text
+      video[:date] = video_info.search("span.meta__val")[index].text
+      video[:url] = video_info.search(".talk-link.ga-link")[index]["href"]
       video
     end
   end
