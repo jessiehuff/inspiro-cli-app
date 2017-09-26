@@ -4,12 +4,16 @@ class Inspiro::Video
 
   @@all = []
 
-  def self.all
-    @@all
+  def initialize
+    @title = title
+    @speaker = speaker
+    @date = date
+    @url = url
+    @@all << self
   end
 
-  def save
-    @@all << self
+  def self.all
+    @@all
   end
 
   def open_in_browser
