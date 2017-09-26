@@ -12,6 +12,7 @@ class Inspiro::Scraper
       video
     end
   end
+end
 
 #  def get_page
 #    Nokogiri::HTML(open("https://www.ted.com/talks?sort=newest&topics%5B%5D=Technology&topics%5B%5D=Business"))
