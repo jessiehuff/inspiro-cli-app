@@ -1,8 +1,8 @@
 class Inspiro::Scraper
 
-  def self.scrape_video_page(index_url = "https://www.ted.com/talks?sort=newest&topics%5B%5D=Technology&topics%5B%5D=Business")
-    @doc = Nokogiri::HTML(open(index_url))
-    @doc.css(".col").collect do |video_info|
+  def scrape_video_page
+    doc = Nokogiri::HTML(open("https://www.ted.com/talks?sort=newest&topics%5B%5D=Technology&topics%5B%5D=Business"))
+    doc.css(".col").collect do |video_info|
       video = Inspiro::Video.new
 
       video.title = video_info.search("a .ga-link").text

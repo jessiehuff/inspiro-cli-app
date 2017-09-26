@@ -17,7 +17,7 @@ class Inspiro::CLI
     choice = gets.strip
     while choice != "exit"
       if choice.to_i == 1
-          Inspiro::Scraper.new.print_videos
+          Inspiro::Scraper.new.scrape_video_page
       elsif choice.to_i == 2
         puts "option 2"
         menu
