@@ -9,6 +9,9 @@ class Inspiro::Video
     @speaker = speaker
     @date = date
     @url = url
+  end
+
+  def save
     @@all << self
   end
 

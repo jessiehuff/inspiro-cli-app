@@ -19,6 +19,7 @@ class Inspiro::CLI
       if choice.to_i == 1
         #binding.pry
         Inspiro::Scraper.new.scrape_video_page
+        list_videos
         menu
       elsif choice.to_i == 2
         Inspiro::Scraper.new.scrape_articles
@@ -37,5 +38,11 @@ class Inspiro::CLI
 
   def goodbye
     puts "Thanks for joining us for some inspiration! We hope you now feel ready to take on the world!"
+  end
+
+  def list_videos
+    Inspiro::Video.all.each_with_index do |video, index|
+      puts "#{index + 1}. #{video.title} - #{video.speaker} - #{video.date}: #{video.summary}"
+    end
   end
 end
