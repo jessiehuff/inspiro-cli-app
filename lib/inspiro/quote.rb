@@ -4,6 +4,7 @@ class Quote
   @@all = []
 
   def initialize
+    @words = words
     @@all << self
   end
 

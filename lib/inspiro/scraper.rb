@@ -5,13 +5,8 @@ class Inspiro::Scraper
   def scrape_video_page
     doc = Nokogiri::HTML(open("https://www.ted.com/talks?sort=newest&topics%5B%5D=Technology&topics%5B%5D=Business"))
     doc.css(".m3").collect do |video_info|
-      video = Inspiro::Video.new
-      #binding.pry
-      video[:title] = video_info.search(".h9").first.text
-      video[:speaker] = video_info.search(".h12").text
-      video[:date] = video_info.search(".meta__val").first.text
-      video[:url] = "https://www.ted.com" + video_info.search(".ga-link").first["href"]
-      video.save
+      Inspiro::Video.new_from_video_page(video_info)
+    #  binding.pry
     end
   end
 
