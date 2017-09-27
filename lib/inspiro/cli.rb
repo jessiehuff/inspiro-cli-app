@@ -16,12 +16,11 @@ class Inspiro::CLI
     puts ""
     puts "How would you like to be inspired today?"
     choice = gets.strip
-    while choice != "exit"
       if choice.to_i == 1
-          Inspiro::Scraper.new.scrape_video_page
-          menu
+        Inspiro::Scraper.new.scrape_video_page
+        menu
       elsif choice.to_i == 2
-        puts "option 2"
+        Inspiro::Scraper.new.scrape_articles
         menu
       elsif choice.to_i == 3
         puts "option 3"
@@ -34,7 +33,6 @@ class Inspiro::CLI
         menu
       end
     end
-  end
 
   def goodbye
     puts "Thanks for joining us for some inspiration! We hope you now feel ready to take on the world!"
