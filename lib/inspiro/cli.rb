@@ -17,6 +17,7 @@ class Inspiro::CLI
     puts "How would you like to be inspired today?"
     choice = gets.strip
       if choice.to_i == 1
+        #binding.pry
         Inspiro::Scraper.new.scrape_video_page
         menu
       elsif choice.to_i == 2

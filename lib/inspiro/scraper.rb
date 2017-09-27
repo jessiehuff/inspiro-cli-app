@@ -35,7 +35,10 @@ class Inspiro::Scraper
     doc.css(".txtd").collect do |quote_info|
       quote = {}
       binding.pry
-      quote[:words] = quote_info.search("li").first.text
+      quote[:words] = quote_info.search("li").each_with_index do |item, index|
+        puts "#{index + 1}. #{item.text}"
+        puts ""
+      end
       quote
     end
   end
