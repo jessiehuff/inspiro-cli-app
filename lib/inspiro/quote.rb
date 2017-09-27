@@ -1,5 +1,5 @@
 class Quote
-  attr_accessor :words, :author
+  attr_accessor :words
 
   @@all = []
 

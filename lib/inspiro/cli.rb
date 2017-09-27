@@ -23,7 +23,7 @@ class Inspiro::CLI
         Inspiro::Scraper.new.scrape_articles
         menu
       elsif choice.to_i == 3
-        puts "option 3"
+        Inspiro::Scraper.new.scrape_quotes
         menu
       elsif choice.downcase == "exit"
         goodbye
