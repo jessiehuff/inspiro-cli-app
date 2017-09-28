@@ -20,12 +20,19 @@ class Inspiro::CLI
         #binding.pry
         Inspiro::Scraper.new.scrape_video_page
         list_videos
-        puts "For more details, enter 'details' and enter 'menu' to go back to the main menu."
-        request = gets.strip
-        if request.downcase == "details"
-          video_details
-        elsif request.downcase == "menu"
+        puts "For more details, choose the video number."
+        input = gets.strip
+          video_selection = Inspiro::Video.find(input.to_i)
+          video_details(video_selection)
+        puts ""
+        puts "Would you like more inspiration?"
+        puts "Enter Y or N"
+        input = gets.strip.downcase
+        if input == "y"
           menu
+        elsif input == "n"
+          goodbye
+          exit
         else
           puts "I'm not sure what you'd like."
           menu
@@ -50,22 +57,21 @@ class Inspiro::CLI
   end
 
   def list_videos
-    #binding.pry
     Inspiro::Video.all.each_with_index do |video, index|
       puts "#{index + 1}. #{video.title} - #{video.speaker}"
     end
   end
 
-  def video_details(number_chosen)
-      puts "#{number_chosen.title} - #{number_chosen.speaker} - #{number_chosen.date} - #{number_chosen.category}"
-      puts "#{number_chosen.url}"
+  def video_details(video_selection)
+      puts "#{video_selection.title} - #{video_selection.speaker} - #{video_selection.date} - #{video_selection.category}"
+      puts "#{video_selection.url}"
   end
 end
 
-- Find the category selector
-- Make sure that asking for input from user
-- Run input from user (number of video)
-- Use that find method to find that video object
+#- Find the category selector
+#- Make sure that asking for input from user
+#- Run input from user (number of video)
+#- Use that find method to find that video object
 
-doc.xpath("//div[@class='c-4 nr nt']/ul[3]/li").text
-doc.css("div.c-4.nr.nt ul[3] li").text
+#doc.xpath("//div[@class='c-4 nr nt']/ul[3]/li").text
+#doc.css("div.c-4.nr.nt ul[3] li").text

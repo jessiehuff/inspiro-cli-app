@@ -9,7 +9,7 @@ class Inspiro::Video
     video_info.search(".h9").first.text,
     video_info.search(".h12").text,
     video_info.search(".meta__val").first.text,
-    video_info.search("")
+    video_info.search(".meta__val")[1].text,
     "https://www.ted.com" + video_info.search(".ga-link").first["href"]
     )
   end
