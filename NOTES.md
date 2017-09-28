@@ -10,4 +10,7 @@ Planning Inspiro
 
 Issues remaining:
 - Need to get link for articles (css selector still not working)
+TODO: Keep working on scraping the url correctly
+
 - Formatting issues with video list
+TODO: Consider solutions
