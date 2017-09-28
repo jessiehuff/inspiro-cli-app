@@ -33,6 +33,8 @@ class Inspiro::CLI
         elsif input == "n"
           goodbye
           exit
+        elsif input == "exit"
+          exit
         else
           puts "I'm not sure what you'd like."
           menu
@@ -53,13 +55,34 @@ class Inspiro::CLI
           elsif input == "n"
             goodbye
             exit
+          elsif input == "exit"
+            exit
           else
             puts "I'm not sure what you'd like."
             menu
           end
       elsif choice.to_i == 3
-        Inspiro::Scraper.new.scrape_quotes
-        menu
+        Inspiro::Scraper.new.scrape_quote_page
+        list_quotes
+        puts "For more details, choose the quote number."
+        input = gets.strip
+          quote_selection = Inspiro::Quote.find(input.to_i)
+          quote_details(quote_selection)
+          puts ""
+          puts "Would you like more inpsiration?"
+          puts "Enter Y or N"
+          input = gets.strip.downcase
+          if input == "y"
+            menu
+          elsif input == "n"
+            goodbye
+            exit
+          elsif input == "exit"
+            exit
+          else
+            puts "I'm not sure what you'd like."
+            menu
+          end
       elsif choice.downcase == "exit"
         goodbye
         exit
@@ -91,24 +114,23 @@ class Inspiro::CLI
   end
 
   def article_details(article_selection)
-      puts "#{article_selection.title} - #{article_selection.author}"
-      puts "#{article_selection.summary} - #{article_selection.date}"
+      puts ""
+      puts "#{article_selection.title} - #{article_selection.author} - #{article_selection.date}"
+      puts "#{article_selection.summary}"
       puts "#{article_selection.url}"
   end
 
+  def list_quotes
+    Inspiro::Quote.all.each_with_index do |quote, index|
+      puts "#{index + 1}. #{quote.words}"
+      puts ""
+    end
+  end
 
-
-
-
-
-
+  def quote_details(quote_selection)
+      puts ""
+      puts "#{quote_selection.words} - #{quote_selection.author}"
+      puts "#{quote_selection.url}"
+  end
 
 end
-
-#- Find the category selector
-#- Make sure that asking for input from user
-#- Run input from user (number of video)
-#- Use that find method to find that video object
-
-#doc.xpath("//div[@class='c-4 nr nt']/ul[3]/li").text
-#doc.css("div.c-4.nr.nt ul[3] li").text

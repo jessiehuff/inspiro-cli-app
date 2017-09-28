@@ -14,7 +14,7 @@ class Inspiro::Article
     )
   end
 
-  def initialize
+  def initialize(title = nil, author = nil, summary = nil, date = nil, url = nil)
     @title = title
     @author = author
     @summary = summary

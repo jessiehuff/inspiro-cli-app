@@ -17,16 +17,10 @@ class Inspiro::Scraper
     end
   end
 
-  def scrape_quotes
-    doc = Nokogiri::HTML(open("https://letterpile.com/quotes/100-Inspirational-Sayings-Quotes-and-Phrases"))
-    doc.css(".txtd").collect do |quote_info|
-      quote = {}
-      #binding.pry
-      quote[:words] = quote_info.search("li").each_with_index do |item, index|
-        puts "#{index + 1}. #{item.text}"
-        puts ""
+  def scrape_quote_page
+    doc = Nokogiri::HTML(open("http://www.wiseoldsayings.com/funny-motivational-quotes/"))
+    doc.css(".quote").collect do |quote_info|
+      Inspiro::Quote.new_from_quote_page(quote_info)
       end
-      quote
     end
-  end
 end
