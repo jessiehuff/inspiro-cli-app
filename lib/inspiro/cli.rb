@@ -1,5 +1,4 @@
 #CLI Controller
-require 'pry'
 
 class Inspiro::CLI
   def call
@@ -98,12 +97,15 @@ class Inspiro::CLI
 
   def list_videos
     Inspiro::Video.all.each_with_index do |video, index|
-      puts "#{index + 1}. #{video.title} - #{video.speaker}"
+      puts "#{index + 1}.#{video.title} - #{video.speaker}"
+      puts ""
     end
   end
 
   def video_details(video_selection)
-      puts "#{video_selection.title} - #{video_selection.speaker} - #{video_selection.date} - #{video_selection.category}"
+      puts "#{video_selection.title}"
+      puts "#{video_selection.speaker} - #{video_selection.date}"
+      puts "#{video_selection.category}"
       puts "#{video_selection.url}"
   end
 

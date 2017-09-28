@@ -5,6 +5,7 @@ class Inspiro::Article
   @@all = []
 
   def self.new_from_article_page(article_info)
+    #binding.pry
     self.new(
     article_info.search(".entry-title").first.text,
     article_info.search(".td-post-author-name").first.text,
