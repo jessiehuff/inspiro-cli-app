@@ -1,5 +1,4 @@
 #CLI Controller
-
 class Inspiro::CLI
   def call
     puts "Welcome to Inspiro - your source for daily inspiration!"
@@ -133,5 +132,4 @@ class Inspiro::CLI
       puts "#{quote_selection.words} - #{quote_selection.author}"
       puts "#{quote_selection.url}"
   end
-
 end
