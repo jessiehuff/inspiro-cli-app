@@ -5,13 +5,12 @@ class Inspiro::Article
   @@all = []
 
   def self.new_from_article_page(article_info)
-    #binding.pry
     self.new(
     article_info.search(".entry-title").first.text,
     article_info.search(".td-post-author-name").first.text,
-    article_info.search(".td-excerpt").first.text,
+    article_info.search(".td-excerpt").first.text.gsub("\r\n" + "               ", ""),
     article_info.search(".td-post-date").first.text,
-    article_info.search(".entry-title").first["href"] #still not sure why this line doesn't work
+    article_info.search(".entry-title a")[0]["href"]
     )
   end
 

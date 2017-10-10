@@ -97,8 +97,7 @@ class Inspiro::CLI
 
   def list_videos
     Inspiro::Video.all.each_with_index do |video, index|
-      puts "#{index + 1}.#{video.title} - #{video.speaker}"
-      puts ""
+      puts "#{index + 1}. #{video.title} - #{video.speaker}"
     end
   end
 

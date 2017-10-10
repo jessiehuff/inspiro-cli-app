@@ -6,11 +6,11 @@ class Inspiro::Video
 
   def self.new_from_video_page(video_info)
     self.new(
-    video_info.search(".h9").first.text,
-    video_info.search(".h12").text,
-    video_info.search(".meta__val").first.text,
-    video_info.search(".meta__val")[1].text,
-    "https://www.ted.com" + video_info.search(".ga-link").first["href"]
+    video_info.search(".h9").first.text.gsub("\n", ""),
+    video_info.search(".h12").text.gsub("\n", ""),
+    video_info.search(".meta__val").first.text.gsub("\n", ""),
+    video_info.search(".meta__val")[1].text.gsub("\n", ""),
+    "https://www.ted.com" + video_info.search(".ga-link").first["href"].gsub("\n", "")
     )
   end
 
@@ -20,6 +20,7 @@ class Inspiro::Video
     @date = date
     @category = category
     @url = url
+    #binding.pry
     @@all << self
   end
 
