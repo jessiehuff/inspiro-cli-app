@@ -1,4 +1,3 @@
-
 class Inspiro::Quote
   attr_accessor :words, :author, :url
 

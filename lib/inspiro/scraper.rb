@@ -1,4 +1,3 @@
-
 class Inspiro::Scraper
 
   def scrape_video_page

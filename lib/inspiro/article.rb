@@ -1,4 +1,3 @@
-
 class Inspiro::Article
   attr_accessor :title, :author, :summary, :date, :url
 

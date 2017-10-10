@@ -1,4 +1,3 @@
-
 class Inspiro::Video
   attr_accessor :title, :speaker, :date, :category, :url
 
